@@ -2,6 +2,10 @@ import React from 'react';
 import './App.css';
 import Header from './Header'
 import DateCards from './DateCards'
+import Chats from './Chats'
+import ChatScreen from './ChatScreen'
+
+import SwipeButtons from './SwipeButtons'
 import {
     BrowserRouter as Router,
     Switch,
@@ -12,31 +16,26 @@ import {
 function App() {
   return (
     <div className="App">
-        {/* Header */}
-        <Header/>
         <Router>
+
             <Switch>
-                <Route path="/chat">
-                    <h1>I'm chat page</h1>
+                <Route path="/chat/:person">
+                    <Header backButton="/chats" />
+                    <ChatScreen />
                 </Route>
+
+                <Route path="/chats">
+                    <Header backButton="/" />
+                    <Chats/>
+                </Route>
+
                 <Route path="/">
+                    <Header/>
                     <DateCards/>
+                    <SwipeButtons/>
                 </Route>
 
             </Switch>
-
-
-
-            {/* Cards */}
-
-
-            {/* Footer */}
-
-
-            {/* Chat List Screen */}
-
-
-            {/* Individual Chat Screen */}
         </Router>
     </div>
   );
